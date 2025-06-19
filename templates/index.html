@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>shrted</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #181c1f;
+            font-family: Consolas, monospace;
+            color: #e5e7eb;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: #23272a;
+            border-radius: 8px;
+            padding: 24px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            color: #22c55e;
+            font-size: 1.4rem;
+            text-align: left;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .footer:hover, .header:hover, .result:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 16px;
+            width: 100%;
+            display: flex;
+        }
+        input[type="url"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            font-size: 1rem;
+            background: #181c1f;
+            color: #e5e7eb;
+            outline: none;
+            font-family: Consolas, monospace;
+        }
+        input[type="url"]::placeholder {
+            color: #22c55e;
+            opacity: 0.7;
+        }
+        button {
+            padding: 10px 16px;
+            background: #22c55e;
+            color: #181c1f;
+            border: none;
+            border-radius: 0 6px 6px 0;
+            font-size: 1rem;
+            font-family: Consolas, monospace;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .result {
+            color: #22c55e;
+            font-size: 1rem;
+            word-break: break-all;
+            margin-top: 16px;
+            text-decoration: none;
+        }
+        .footer {
+            color: #22c55e;
+            font-size: 0.8rem;
+            text-align: left;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="header" href="https://shrted.z-n.cc/" target="_blank">shrted</a>
+        <a class="footer" href="https://z-n.cc/" target="_blank">by vzpyr</a>
+        {% if short_url %}
+            <a class="result" href="{{ short_url }}" target="_blank">shortened url: {{ short_url }}</a>
+        {% endif %}
+        <form method="post">
+            <input type="url" name="long_url" placeholder="url" required>
+            <button type="submit">shorten</button>
+        </form>
+    </div>
+</body>
+</html>
